@@ -50,8 +50,11 @@ if (loginForm) {
 
         // Logic Check 
         if (enteredEmail === savedEmail && enteredPassword === savedPassword) {
+            // Session flag set karna zaroori hai dashboard redirect se pehle!
+            localStorage.setItem("isLoggedIn", "true");
+            
             alert('Logged in successfully! 🎉');
-        window.location.href = "dashboard.html"; 
+            window.location.href = "dashboard.html"; 
         } else {
             alert("Email or password is incorrect ❌");
         }
@@ -111,7 +114,7 @@ if(logoutbtn){
     logoutbtn.addEventListener("click", () =>{
         localStorage.removeItem('isLoggedIn')
 
-        window.location.href = "login.html"
+        window.location.href = "index.html"
     })
 }
 
@@ -119,6 +122,6 @@ if(logoutbtn){
 // checking if we r on dashboard
 if (window.location.pathname.includes("dashboard.html")) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 }
